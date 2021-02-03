@@ -1,0 +1,14 @@
+練習用的api
+
+
+將 com.practicesample.main 複製至練習專案 src 下,
+並將 sample.java 複製一份到練習的 package 下
+
+IPractice.run 預設 執行目錄下的 Pxxx 的 class 的 main (String[])
+執行目錄是練習用的 package,應視實際目錄修改
+Pxxx 預設是 P1 ~ P100, 當 Pxxx 存在 xxx 最大數時,將運行此 Pxxx
+範本 class P 可以做為複製的範本 , 複製後將class 名稱修改為 P1~Pn
+
+IPractice.run 有三個參數, 分別為 目錄、xxx的值、class P 的前置名稱
+例如 : IPractice.run("src\\test" , 20 , Test )
+	將運行 class Test20 開始 直到 class Test1 存在的 class 
