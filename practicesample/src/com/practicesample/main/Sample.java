@@ -1,9 +1,8 @@
 package com.practicesample.main;
 
-
 public class Sample {
 	public static void main(String[] args) throws Exception {
-		IPractice.run("src\\com.practicesample.main");
+		Practice.get("src\\com.practicesample.main").run();
 	}
 }
 
@@ -12,4 +11,11 @@ class P {
 
 	}
 }
+
+class P1 {
+	public static void main(String[] args) throws Exception {
+		S.o.pln("test");
+	}
+}
+
 
