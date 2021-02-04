@@ -9,6 +9,10 @@ public abstract class Practice {
 	private static final String defaultPrefixName = "P";
 	private static final int defaultMaxValueOfSufferName = 100;
 	private static final String defaultMethod = "main";
+	private static final int LoadClassSuccessful = 1;
+	private static final int LoadClassNotFound = 2;
+	private static final int OtherError = 3;
+
 	private String parentpath;
 	private String prename = defaultPrefixName;
 	private int maxValueOfSufferName = defaultMaxValueOfSufferName;
@@ -34,13 +38,13 @@ public abstract class Practice {
 	}
 
 	public void run(String fname) throws Exception {
-		if (!invoke(this.parentpath, fname)) {
+		if (invoke(this.parentpath, fname) == LoadClassNotFound) {
 			throw new Exception("未找到可執行的class");
 		}
 	}
 
 	public void run(int sufname) throws Exception {
-		if (!invoke(this.parentpath, this.prename + sufname)) {
+		if (invoke(this.parentpath, this.prename + sufname) == LoadClassNotFound) {
 			throw new Exception("未找到可執行的class");
 		}
 	}
@@ -54,7 +58,8 @@ public abstract class Practice {
 				throw new Exception("未找到任何可執行的class");
 			}
 			fname = this.prename + maxcount--;
-			if (invoke(this.parentpath, fname)) {
+			int r = invoke(this.parentpath, fname);
+			if (r == LoadClassSuccessful || r == OtherError) {
 				break;
 			} else {
 				continue;
@@ -62,19 +67,19 @@ public abstract class Practice {
 		}
 	}
 
-	private static boolean invoke(String parentpath, String fname) {
-		boolean r = false;
+	private static int invoke(String parentpath, String fname) {
+		int r = 0;
 		Path path = Paths.get("src").relativize(FileSystems.getDefault().getPath(parentpath, fname));
 		try {
 			Class<?> cls = Class.forName(path.toString().replace("\\", "."));
 			Method m = cls.getMethod(defaultMethod, String[].class);
 			m.invoke(cls.newInstance(), (Object) new String[] {});
-			r = true;
+			r = LoadClassSuccessful;
 		} catch (ClassNotFoundException e) {
-			r = false;
+			r = LoadClassNotFound;
 		} catch (Exception e) {
 			e.printStackTrace();
-			r = false;
+			r = OtherError;
 		}
 		return r;
 	}

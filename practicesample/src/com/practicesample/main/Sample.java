@@ -7,15 +7,13 @@ public class Sample {
 }
 
 class P {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
 	}
 }
 
 class P1 {
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		S.o.pln("test");
 	}
 }
-
-
