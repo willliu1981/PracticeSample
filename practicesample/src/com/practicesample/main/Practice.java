@@ -5,6 +5,9 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/*
+ * 此類別需放在和Sample同一個package,否則將找不到P1~Pn class,因為 Pn 是一個package 的default 的類別
+ */
 public abstract class Practice {
 	private static final String defaultPrefixName = "P";
 	private static final int defaultMaxValueOfSufferName = 100;

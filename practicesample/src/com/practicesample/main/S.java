@@ -6,7 +6,7 @@ import java.io.PrintStream;
 public class S {
 	public static O o = new S().new O();
 
-	class O extends PrintStream {
+	public class O extends PrintStream {
 
 		public O() {
 			super(System.out);
