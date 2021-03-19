@@ -1,5 +1,7 @@
 package com.practicesample.main;
 
+import static com.practicesample.main.S.o;
+
 public class Sample {
 	public static void main(String[] args) throws Exception {
 		Practice.get("src\\com.practicesample.main").run();
@@ -14,6 +16,6 @@ class P {
 
 class P1 {
 	public static void main(String[] args) {
-		S.o.pln("test");
+		o.pln("test");
 	}
 }
